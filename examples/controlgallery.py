@@ -75,7 +75,7 @@ def build_numbers_and_lists_page(self: HorizontalBox):
     slider = Slider(0, 100)
     progressBar = ProgressBar()
 
-    def update(data):
+    def update(_):
         slider.setValue(spinbox.getValue())
         spinbox.setValue(slider.getValue())
         progressBar.setValue(spinbox.getValue())
@@ -144,11 +144,11 @@ def build_data_choosers_page(self: HorizontalBox):
     grid1.setPadded(True)
 
     openFileButton = Button("Open File")
-    openFolderButton = Button("Open Folder")
+    #openFolderButton = Button("Open Folder")
     saveFileButton = Button("Save File")
 
     openFileEntry = Entry()
-    openFolderEntry = Entry()
+    #openFolderEntry = Entry()
     saveFileEntry = Entry()
 
     openFileEntry.setReadOnly(True)
@@ -156,7 +156,7 @@ def build_data_choosers_page(self: HorizontalBox):
     saveFileEntry.setReadOnly(True)
 
     openFileButton.onClick = lambda _: openFileEntry.setText(window.openFile())
-    openFolderButton.onClick = lambda _: openFolderEntry.setText(window.openFolder())
+    #openFolderButton.onClick = lambda _: openFolderEntry.setText(window.openFolder())
     saveFileButton.onClick = lambda _: saveFileEntry.setText(window.saveFile())
     
     grid1.append(openFileButton, 0, 0, 1, 1, False, uiAlign.uiAlignFill, False, uiAlign.uiAlignFill)
@@ -192,7 +192,7 @@ def build_data_choosers_page(self: HorizontalBox):
 
 class MainWindow(Window):
     def __init__(self):
-        super().__init__("libui Control Gallery", 640, 480)
+        super().__init__("libui Control Gallery", 640, 480, False)
         self.setMargined(True)
 
         basic_controls = VerticalBox()
@@ -214,8 +214,6 @@ class MainWindow(Window):
         
         self.setChild(tab)
 
-        self.show()
-
     def onClose(self, data):
         super().onClose(data)
         app.stop()
@@ -224,7 +222,7 @@ if __name__ == "__main__":
     app = App()
 
     window = MainWindow()
-
     window.show()
+
     app.start()
     app.close()
