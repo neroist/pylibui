@@ -52,8 +52,8 @@ def build_basic_controls_page(self: VerticalBox):
     form.setPadded(True)
 
     form.append("Entry", Entry())
-    form.append("Password Entry", PasswordEntry())
     form.append("Search Entry", SearchEntry())
+    form.append("Password Entry", PasswordEntry())
     form.append("Multiline Entry", MultilineEntry(), True)
     form.append("Multiline Entry No Wrap", NonWrappingMultilineEntry(), True)
     entriesGroup.setChild(form)
